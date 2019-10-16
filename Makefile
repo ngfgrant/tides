@@ -1,10 +1,5 @@
-coverage-all:
-		coverage erase
-		coverage run --source admiralty-tides -m unittest
-		coverage xml
-
-coverage: coverage-all
-		coverage report --show-missing
+coverage:
+	    pytest --cov-report term-missing --cov-report xml --cov=tides tests/
 
 test:
 	    pytest --junitxml=test-reports/junit.xml
@@ -13,7 +8,7 @@ lint:
 	    flake8 .
 
 acceptance-test:
-	    behave acceptance-tests/
+	    pytest tests/acceptance
 
 sonar:
 		sonar-scanner \
