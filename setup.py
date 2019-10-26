@@ -17,7 +17,7 @@ setup(
     packages=find_packages(
         exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     package_dir={
-        "tides": "nautical-tides"
+        "tides": "tides"
     },
     description='A wrapper for the tides API',
     long_description=readme,

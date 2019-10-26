@@ -73,7 +73,7 @@ jobs:
             - "venv"
 
       - run:
-          name: Install Navigation
+          name: Install Tides
           command: |
             . venv/bin/activate
             pip3 install -e .
