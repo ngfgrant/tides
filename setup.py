@@ -1,7 +1,7 @@
 # !/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from admiralty_tides import __version__
+from tides import __version__
 from setuptools import setup, find_packages
 
 
@@ -12,21 +12,21 @@ with open("CHANGELOG.md") as history_file:
     history = history_file.read()
 
 setup(
-    name='admirality-tides',
+    name='tides',
     version=__version__,
     packages=find_packages(
         exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     package_dir={
-        "admiralty-tides": "admiralty-tides"
+        "tides": "nautical-tides"
     },
-    description='An wrapper for the Admiralty tides API',
+    description='A wrapper for the tides API',
     long_description=readme,
     long_description_content_type="text/markdown",
     author='Niall Grant',
     license='Apache2',
     author_email='ngfgrant@gmail.com',
     url='https://github.com/ngfgrant/admiralty-tides',
-    keywords=['admiralty', 'tides', 'api-wrapper'],
+    keywords=['tides', 'api-wrapper'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Console',

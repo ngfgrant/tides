@@ -3,6 +3,10 @@ import os
 from tides.provider import TideProvider
 from tides.exceptions import MissingApiKeyError
 
+__author__ = 'Niall Grant'
+__email__ = 'ngfgrant@gmail.com'
+__version__ = '0.0.0'
+
 
 class Tides:
     def __init__(self, provider_name):
