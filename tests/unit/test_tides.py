@@ -1,6 +1,6 @@
 import pytest
 from os import environ
-from mock import patch
+from unittest.mock import patch
 
 from tides import Tides
 from tides.provider import TideProvider
