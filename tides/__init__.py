@@ -5,7 +5,7 @@ from tides.exceptions import MissingApiKeyError
 
 __author__ = 'Niall Grant'
 __email__ = 'ngfgrant@gmail.com'
-__version__ = '0.0.0'
+__version__ = '0.1.0'
 
 
 class Tides:
