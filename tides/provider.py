@@ -18,7 +18,39 @@ class TideProvider(ABC):
 
     @abstractmethod
     def get_all_stations():
-        pass
+        """
+        Returns all tidal stations on the Provider
+        """
+
+    @abstractmethod
+    def get_station_by_id():
+        """
+        Returns the TideStation when provided an id
+        """
+
+    @abstractmethod
+    def get_station_by_name():
+        """
+        Returns Tidal Station when given a Station Name
+        """
+
+    @abstractmethod
+    def get_tides():
+        """
+        Returns a list of Tide Events, for a given station and duration
+        """
+
+    @abstractmethod
+    def next_tide():
+        """
+        Returns the next tide event object
+        """
+
+    @abstractmethod
+    def time_to_next_tide():
+        """
+        Returns the time to the next tide
+        """
 
 
 class AdmiraltyTideProvider(TideProvider, key='admiralty'):
@@ -98,22 +130,31 @@ class AdmiraltyTideProvider(TideProvider, key='admiralty'):
         current_dt = datetime.utcnow()
 
         for i in range(len(tides)):
-            raw_dt = tides[i].get("DateTime")
-            parsed_dt = raw_dt.split(".")[0]
-            tide_dt = datetime.strptime(parsed_dt, "%Y-%m-%dT%H:%M:%S")
-
+            tide_dt = self.__parse_datetime(tides[i])
             if current_dt < tide_dt:
                 return tides[i]
 
             if tide_dt.day > current_dt.day:
                 return tides[i]
 
+    def time_to_next_tide(self, station=None):
+        next_tide = self.next_tide(station=station)
+        next_tide_time = self.__parse_datetime(next_tide)
+        return next_tide_time - datetime.utcnow()
+
     def __call(self, endpoint):
         response = requests.get(self.base_url + endpoint,
-                                headers={'Ocp-Apim-Subscription-Key': self.api_key}
-                                )
+                                headers={'Ocp-Apim-Subscription-Key': self.api_key})
         return response.json()
 
     def __get_station_id(self, station):
         response = self.__call("Stations?name={}".format(station))
         return response["features"][0]["properties"]["Id"]
+
+    def __parse_datetime(self, tide):
+        raw_dt = tide.get("DateTime")
+        parsed_dt = raw_dt.split(".")[0]
+        return self.__format_datetime(parsed_dt)
+
+    def __format_datetime(self, time):
+        return datetime.strptime(time, "%Y-%m-%dT%H:%M:%S")
