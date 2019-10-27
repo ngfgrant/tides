@@ -1,4 +1,4 @@
-# Contributing to Admiralty Tides API Wrapper
+# Contributing to Tides API Wrapper
 
 We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
 

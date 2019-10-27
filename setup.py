@@ -25,7 +25,7 @@ setup(
     author='Niall Grant',
     license='Apache2',
     author_email='ngfgrant@gmail.com',
-    url='https://github.com/ngfgrant/admiralty-tides',
+    url='https://github.com/ngfgrant/tides',
     keywords=['tides', 'api-wrapper'],
     classifiers=[
         'Development Status :: 3 - Alpha',

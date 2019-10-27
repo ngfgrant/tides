@@ -12,7 +12,7 @@ acceptance-test:
 
 sonar:
 		sonar-scanner \
-				  -Dsonar.projectKey=ngfgrant_admiralty-tides \
+				  -Dsonar.projectKey=ngfgrant_tides \
 				  -Dsonar.organization=ngfgrant-github \
 				  -Dsonar.sources=. \
 				  -Dsonar.host.url=https://sonarcloud.io \
